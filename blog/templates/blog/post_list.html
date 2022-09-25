@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% extends 'blog/base.html' %}
+{% block content %}
     <body>
-        <ul>
             {% for post in posts %}
-            <li>
-                <p>{{ post.title }}</p>
-                <p>{{ post.text }}</p>
-                <p>{{ post.published_date }}</p>
-            </li>
+            <ul>
+                <li><a href="{% url 'blog:post_detail' post.id %}">{{ post }}</a></li>
+            </ul>
             {% endfor %}
-        </ul>
     </body>
+    <a href="{% url 'blog:add_post' %}">Add new post</a>
+
 </html>
+{% endblock content %}
